@@ -4,7 +4,7 @@ namespace Venues\Domain;
 
 use Venues\Error;
 
-require_once "lib/error/BadParameter.php";
+require_once 'lib/error/BadParameter.php';
 
 /**
  * Location
@@ -334,17 +334,39 @@ class Location
         $countryCode = NULL
     )
     {
+        if (!is_numeric($lat))
+        {
+            throw new Error\BadParameter(
+                'Error: Latitude \'' . $lat . '\' requires a numeric value.'
+            );
+        }
+
         $this->lat = $lat;
+
+        if (!is_numeric($lon))
+        {
+            throw new Error\BadParameter(
+                'Error: Longitude \'' . $lon . '\' requires a numeric value.'
+            );
+        }
+
         $this->lon = $lon;
+
         $this->address = $address;
         $this->postcode = $postcode;
         $this->city = $city;
 
-        if (!isset(self::$countryCodes[$countryCode]))
+        if (!is_null($countryCode))
         {
-            throw new Error\BadParameter(
-                'Error: Country code is not a valid ISO 3166 aplha 2 code'
-            );
+            $countryCode = strtoupper($countryCode);
+
+            if(!isset(self::$countryCodes[$countryCode]))
+            {
+                throw new Error\BadParameter(
+                    'Error: Country code \'' . $countryCode . '\' is not a '
+                    . 'valid code according to ISO 3166 aplha 2.'
+                );
+            }
         }
 
         $this->countryCode = $countryCode;
@@ -408,5 +430,51 @@ class Location
     public function getCountryCode()
     {
         return $this->countryCode;
+    }
+
+    // --- public methods
+    
+    /**
+     * Get distance to
+     *
+     * Method that return the distance on km from the current location 
+     * into the $to location.
+     *
+     * Using the Harvesine formula, extracted from:
+     *     http://www.movable-type.co.uk/scripts/latlong.html
+     *
+     * @param Location $to
+     *
+     * @return Float Distance from the current location to $to in km.
+     */
+    public function getDistanceTo(Location $to)
+    {
+        $dLat = $this->toRadians($to->lat - $this->lat);
+        $dLon = $this->toRadians($to->lon - $this->lon);
+
+        $a = pow(sin($dLat / 2), 2) +
+            cos($this->toRadians($this->lat)) *           
+            cos($this->toRadians($to->lat)) *  
+            pow(sin($dLon / 2), 2);
+
+        $c = 2 * atan2(sqrt($a), sqrt(1 - $a));                   
+
+        return self::RADIUS_OF_EARTH_IN_KM * $c;                  
+    }
+
+    // --- private methods
+    
+    /**
+     * To radians
+     *
+     * Method that transform an angle to radian.
+     *
+     * @param Float $value 
+     *
+     * @return Float
+     */
+    private function toRadians($value)
+    {
+        return $value * pi() / 180;
     }
 }

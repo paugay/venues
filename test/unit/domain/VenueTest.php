@@ -1,11 +1,17 @@
 <?php
 
-namespace Venues;
-
 require_once "lib/domain/Venue.php";
 
+/**
+ * Venue test
+ *
+ * @version     $Id$
+ * @package     Venues
+ * @author      Pau Gay <pau.gay@gmail.com> 
+ */
+
 class VenueTest 
-    extends \PHPUnit_Framework_TestCase
+    extends PHPUnit_Framework_TestCase
 {
     private $title;
     private $location;
@@ -13,12 +19,12 @@ class VenueTest
     public function setUp()
     {
         $this->title = 'test';
-        $this->location = $this->getMock('Venues\Location');
+        $this->location = $this->getMock('Venues\Domain\Location');
     }
 
     public function buildDomainObject()
     {
-        return new Venue(
+        return new Venues\Domain\Venue(
             $this->title,
             $this->location
         );
@@ -28,6 +34,6 @@ class VenueTest
     {
         $object = $this->buildDomainObject();
 
-        $this->assertTrue($object instanceof Venue);
+        $this->assertTrue($object instanceof Venues\Domain\Venue);
     }
 }

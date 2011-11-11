@@ -1,9 +1,17 @@
 <?php
 
-require_once "lib/domain/Location.php";
+require_once 'lib/domain/Location.php';
+
+/**
+ * Location test
+ *
+ * @version     $Id$
+ * @package     Venues
+ * @author      Pau Gay <pau.gay@gmail.com> 
+ */
 
 class LocationTest 
-    extends \PHPUnit_Framework_TestCase
+    extends PHPUnit_Framework_TestCase
 {
     private $lat;
     private $lon;
@@ -24,7 +32,7 @@ class LocationTest
 
     public function buildDomainObject()
     {
-        return new \Venues\Domain\Location(
+        return new Venues\Domain\Location(
             $this->lat,
             $this->lon,
             $this->address,
@@ -38,15 +46,74 @@ class LocationTest
     {
         $object = $this->buildDomainObject();
 
-        $this->assertTrue($object instanceof \Venues\Domain\Location);
+        $this->assertTrue($object instanceof Venues\Domain\Location);
     }
 
-    public function testErrorOnWrongCountryCode()
+    public function testCanConstructWithNullValues()
     {
-        $this->setExpectedException('\Venues\Error\BadParameter');
-
-        $this->countryCode = "UK";
+        $this->address = NULL;
+        $this->postcode = NULL;
+        $this->city = NULL;
+        $this->countryCode = NULL;
 
         $object = $this->buildDomainObject();
+
+        $this->assertTrue($object instanceof Venues\Domain\Location);
+    }
+
+    public function testCanConstructWithLowercaseCountryCode()
+    {
+        $this->countryCode = 'gb';
+
+        $object = $this->buildDomainObject();
+
+        $this->assertTrue($object instanceof Venues\Domain\Location);
+    }
+
+    public function testErrorOnNonNumericLatLon()
+    {
+        $this->setExpectedException('Venues\Error\BadParameter');
+
+        $this->lat = 'lat';
+        $this->lon = 'lon';
+
+        $object = $this->buildDomainObject();
+    }
+
+    public function testErrorOnUnknownCountryCode()
+    {
+        $this->setExpectedException('Venues\Error\BadParameter');
+
+        $this->countryCode = 'UK';
+
+        $object = $this->buildDomainObject();
+    }
+
+    public function testGetDistanceTo()
+    {
+        $this->lat = 50;
+        $this->lon = 50;
+
+        $from = $this->buildDomainObject();
+
+        $to = new Venues\Domain\Location(
+            51,
+            51
+        );
+
+        /*
+         * According to: 
+         *
+         *     http://www.movable-type.co.uk/scripts/latlong.html
+         *
+         * The distance between 50,50 and 51,51 is 131.8 km.
+         */
+
+        $this->assertEquals(round($from->getDistanceTo($to)), 132);
+
+        $this->assertEquals(
+            $from->getDistanceTo($to),
+            $to->getDistanceTo($from)
+        );
     }
 }

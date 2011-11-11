@@ -1,3 +1,13 @@
+== Purpose ==
+
 This a personal challenge.
 
-Try to parse all the Foursquare venues inside a lat-lon polygon.
+The purpose of this library is to grab a set of venues for a given
+lat-lon polygon.
+
+Initially it will grab the venues from Foursquare but later on I will
+try to grab venues from other places as well.
+
+== Evolution ==
+
+test

@@ -1,24 +1,22 @@
 <?php
 
-namespace Venues;
-
 require_once "lib/domain/Venue.php";
 require_once "lib/domain/Location.php";
 
-$pausFlatLocation = new Location(
+$pausFlatLocation = new Venues\Domain\Location(
     30.30,
     40.4,
-    "Flat 1 Mountview",
+    "1 Mountview",
     "SW16 2RN",
     "London",
-    "UK"
+    "GB"
 );
 
-$pausFlat = new Venue(
+$pausFlat = new Venues\Domain\Venue(
     "Pau's flat",
     $pausFlatLocation
 );
 
-echo "all good\n";
+echo "this is a simple test case ... all good :) \n";
 
 ?>
