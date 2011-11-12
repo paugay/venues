@@ -338,20 +338,12 @@ class Location
             );
         }
 
-        $this->lat = $lat;
-
         if (!is_numeric($lon))
         {
             throw new \Venues\Error\BadParameter(
                 'Error: Longitude \'' . $lon . '\' requires a numeric value.'
             );
         }
-
-        $this->lon = $lon;
-
-        $this->address = $address;
-        $this->postcode = $postcode;
-        $this->city = $city;
 
         if (!is_null($countryCode))
         {
@@ -366,6 +358,11 @@ class Location
             }
         }
 
+        $this->lat = $lat;
+        $this->lon = $lon;
+        $this->address = $address;
+        $this->postcode = $postcode;
+        $this->city = $city;
         $this->countryCode = $countryCode;
     }
 

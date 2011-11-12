@@ -15,8 +15,16 @@ namespace Venues\Domain;
  */
 
 class Venue
+    extends KeyedObject
     implements Venue\IVenue
 {
+    /**
+     * Key
+     *
+     * @var Integer;
+     */
+    protected $key;
+
     /**
      * Title
      *
@@ -34,14 +42,23 @@ class Venue
     /**
      * Constructor
      *
+     * @param Integer $key
      * @param String $title
      * @param Location $location
      */
     public function __construct(
+        $key,
         $title,
         Location $location
     )
     {
+        if (!is_int($key))
+        {
+            throw new \Venues\Error\BadParameter(
+                'Error: Key needs a numeric value.'
+            );
+        }
+
         if (empty($title))
         {
             throw new \Venues\Error\BadParameter(
@@ -49,6 +66,7 @@ class Venue
             );
         }
 
+        $this->key = $key;
         $this->title = $title;
         $this->location = $location;
     }

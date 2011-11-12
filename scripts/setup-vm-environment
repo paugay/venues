@@ -1,0 +1,11 @@
+#!/bin/bash
+
+cd /etc/apache2/sites-available
+
+ln -vs /var/www/projects/venues/data/vhost/vm.venues.com vm.venues.com
+a2ensite vm.venues.com
+
+ln -vs /var/www/projects/venues/data/vhost/build.vm.venues.com build.vm.venues.com
+a2ensite build.vm.venues.com
+
+service apache2 restart

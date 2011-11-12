@@ -12,10 +12,13 @@ $pausFlatLocation = new Venues\Domain\Location(
 );
 
 $pausFlat = new Venues\Domain\Venue(
+    123,
     "Pau's flat",
     $pausFlatLocation
 );
 
-echo "this is a simple test case ... all good :) \n";
+echo "this is a simple test case ... all good :) \n\n";
+
+var_dump($pausFlat);
 
 ?>

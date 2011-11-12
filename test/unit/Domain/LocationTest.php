@@ -68,11 +68,19 @@ class LocationTest
         $this->assertTrue($object instanceof Venues\Domain\Location);
     }
 
-    public function testErrorOnNonNumericLatLon()
+    public function testErrorOnNonNumericLat()
     {
         $this->setExpectedException('Venues\Error\BadParameter');
 
         $this->lat = 'lat';
+
+        $object = $this->buildDomainObject();
+    }
+
+    public function testErrorOnNonNumericLon()
+    {
+        $this->setExpectedException('Venues\Error\BadParameter');
+
         $this->lon = 'lon';
 
         $object = $this->buildDomainObject();
@@ -85,6 +93,18 @@ class LocationTest
         $this->countryCode = 'UK';
 
         $object = $this->buildDomainObject();
+    }
+
+    public function testGetters()
+    {
+        $object = $this->buildDomainObject();
+
+        $this->assertEquals($object->getLat(), $this->lat);
+        $this->assertEquals($object->getLon(), $this->lon);
+        $this->assertEquals($object->getAddress(), $this->address);
+        $this->assertEquals($object->getPostcode(), $this->postcode);
+        $this->assertEquals($object->getCity(), $this->city);
+        $this->assertEquals($object->getCountryCode(), $this->countryCode);
     }
 
     public function testGetDistanceTo()

@@ -5,20 +5,27 @@ namespace Venues\Domain\Venue;
 /**
  * Venue interface
  *
+ * Represents any kind of venue or place in the world. It has his own 
+ * location and other parametres that define the properties of the 
+ * venue.
+ *
  * @version     $Id$
  * @package     Venues
  * @author      Pau Gay <pau.gay@gmail.com> 
  */
 
 interface IVenue
+    extends \Venues\Keyed\IKeyedObject
 {
     /**
      * Constructor
      *
+     * @param Integer $key
      * @param String $title
      * @param Location $location
      */
     public function __construct(
+        $key,
         $title,
         \Location $location
     );
