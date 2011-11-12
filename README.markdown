@@ -6,39 +6,6 @@ venues for a given lat-lon polygon.
 Initially it will grab the venues from Foursquare but later on I will try to 
 grab venues from other places as well.
 
-# Changelog
-
-I will try to apply some DDD principles to this bit of library, starting from 
-the beginning and keep adding features on top to try to continuously improve it.
-
-I will be documenting all the changes that I'm doing to it in the following 
-changelog.
-
-## 2011-11-11 - v0.02
-
-Done:
-
-* Autoload from the library (venues.php).
-* Unit test can be run now all together (phpunit test/).
-* Bootstrap for the tests in the phpunit.xml.
-* Sandbox scripts now uses the "venues.php" to initialize the library.
-
-Tag:
-* v0.02
-
-## 2011-11-11 - v0.01
-
-Done:
-
-* Basic domain models Venue and Location. No persistence yet, just the basics.
-* Unit test for both models (no capability to run them all together yet).
-* Wrote a generic "Error\BadParameter" exception to start modeling the error 
-    handling.
-* Small "sandbox" script to check that it is usable: php sandbox/test.php
-
-Tag:
-* v0.01
-
 # Resources
 
 1. [Algorism for calculate the distance between two locations](http://www.movable-type.co.uk/scripts/latlong.html)
