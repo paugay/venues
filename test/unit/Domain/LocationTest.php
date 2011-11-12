@@ -1,7 +1,5 @@
 <?php
 
-require_once 'lib/domain/Location.php';
-
 /**
  * Location test
  *

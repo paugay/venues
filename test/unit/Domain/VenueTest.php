@@ -1,7 +1,5 @@
 <?php
 
-require_once "lib/domain/Venue.php";
-
 /**
  * Venue test
  *
@@ -19,7 +17,13 @@ class VenueTest
     public function setUp()
     {
         $this->title = 'test';
-        $this->location = $this->getMock('Venues\Domain\Location');
+        $this->location = $this->getMock(
+            'Venues\Domain\Location', 
+            array(), 
+            array(), 
+            '', 
+            FALSE // not call the constructor
+        );
     }
 
     public function buildDomainObject()

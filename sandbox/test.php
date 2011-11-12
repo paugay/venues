@@ -1,7 +1,6 @@
 <?php
 
-require_once "lib/domain/Venue.php";
-require_once "lib/domain/Location.php";
+require_once dirname(__DIR__) . "/venues.php";
 
 $pausFlatLocation = new Venues\Domain\Location(
     30.30,

@@ -4,8 +4,6 @@ namespace Venues\Domain;
 
 use Venues\Error;
 
-require_once 'lib/error/BadParameter.php';
-
 /**
  * Location
  *
