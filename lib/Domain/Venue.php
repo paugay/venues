@@ -2,8 +2,6 @@
 
 namespace Venues\Domain;
 
-use Venues\Error;
-
 /**
  * Venue
  *
@@ -17,6 +15,7 @@ use Venues\Error;
  */
 
 class Venue
+    implements Venue\IVenue
 {
     /**
      * Title
@@ -45,7 +44,7 @@ class Venue
     {
         if (empty($title))
         {
-            throw new Error\BadParameter(
+            throw new \Venues\Error\BadParameter(
                 'Error: Title has a empty value.'
             );
         }

@@ -40,4 +40,26 @@ class VenueTest
 
         $this->assertTrue($object instanceof Venues\Domain\Venue);
     }
+
+    public function provideInvalidTitles()
+    {
+        return array(
+            array(''),
+            array('0'),
+            array(0),
+            array(FALSE)
+        );
+    }
+
+    /**
+     * @dataProvider provideInvalidTitles
+     */
+    public function testErrorOnInvalidTitle($title)
+    {
+        $this->setExpectedException('Venues\Error\BadParameter');
+
+        $this->title = $title;
+
+        $object = $this->buildDomainObject();
+    }
 }

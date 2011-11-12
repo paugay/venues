@@ -2,8 +2,6 @@
 
 namespace Venues\Domain;
 
-use Venues\Error;
-
 /**
  * Location
  *
@@ -17,6 +15,7 @@ use Venues\Error;
  */
 
 class Location
+    implements Location\ILocation
 {
     /**
      * Radius of the earth
@@ -334,7 +333,7 @@ class Location
     {
         if (!is_numeric($lat))
         {
-            throw new Error\BadParameter(
+            throw new \Venues\Error\BadParameter(
                 'Error: Latitude \'' . $lat . '\' requires a numeric value.'
             );
         }
@@ -343,7 +342,7 @@ class Location
 
         if (!is_numeric($lon))
         {
-            throw new Error\BadParameter(
+            throw new \Venues\Error\BadParameter(
                 'Error: Longitude \'' . $lon . '\' requires a numeric value.'
             );
         }
@@ -360,7 +359,7 @@ class Location
 
             if(!isset(self::$countryCodes[$countryCode]))
             {
-                throw new Error\BadParameter(
+                throw new \Venues\Error\BadParameter(
                     'Error: Country code \'' . $countryCode . '\' is not a '
                     . 'valid code according to ISO 3166 aplha 2.'
                 );
