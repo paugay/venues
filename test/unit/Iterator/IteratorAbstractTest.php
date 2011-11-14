@@ -8,7 +8,7 @@
  * @author      Pau Gay <pau.gay@gmail.com> 
  */
 
-class AIteratorTest
+class IteratorAbstractTest
     extends PHPUnit_Framework_TestCase
 {
     public function setUp()
@@ -17,7 +17,9 @@ class AIteratorTest
 
     public function buildDomainObject()
     {
-        return $this->getMockForAbstractClass('Venues\Iterator\AIterator');
+        return $this->getMockForAbstractClass(
+            'Venues\Iterator\IteratorAbstract'
+        );
     }
 
     public function testCanConstruct()

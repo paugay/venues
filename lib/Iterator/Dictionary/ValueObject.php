@@ -3,16 +3,16 @@
 namespace Venues\Iterator\Dictionary;
 
 /**
- * Keyed Object iterator
+ * Value Object iterator
  *
- * Represents a iterator that contains elements that have keys.
+ * Represents a iterator that contains elements that DON'T have keys.
  *
  * @version     $Id$
  * @package     Venues
  * @author      Pau Gay <pau.gay@gmail.com> 
  */
 
-class KeyedObject
+class ValueObject
     extends DictionaryAbstract
     implements DictionaryInterface
 {
@@ -27,6 +27,6 @@ class KeyedObject
      */
     public function generateHash($item)
     {
-        return $item->getKey();
+        return md5(serialize($item));
     }
 }

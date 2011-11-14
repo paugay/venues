@@ -11,8 +11,8 @@ namespace Venues\Domain\Location;
  */
 
 class LocationList
-    extends \Venues\Iterator\Dictionary
-    implements \Venues\Iterator\Dictionary\IDictionary
+    extends \Venues\Iterator\Dictionary\ValueObject
+    implements \Venues\Iterator\Dictionary\DictionaryInterface
 {
     /**
      * Add

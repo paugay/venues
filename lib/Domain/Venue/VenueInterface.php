@@ -14,8 +14,8 @@ namespace Venues\Domain\Venue;
  * @author      Pau Gay <pau.gay@gmail.com> 
  */
 
-interface IVenue
-    extends \Venues\Keyed\IKeyedObject
+interface VenueInterface
+    extends \Venues\Keyed\KeyedObjectInterface
 {
     /**
      * Constructor

@@ -20,14 +20,16 @@ class DictionaryTest
 
     public function buildDomainObject()
     {
-        return new Venues\Iterator\Dictionary();
+        return new Venues\Iterator\Dictionary\ValueObject();
     }
 
     public function testCanConstruct()
     {
         $dic = $this->buildDomainObject();
 
-        $this->assertTrue($dic instanceof Venues\Iterator\Dictionary);
+        $this->assertTrue(
+            $dic instanceof Venues\Iterator\Dictionary\ValueObject
+        );
     }
 
     public function testAddElement()

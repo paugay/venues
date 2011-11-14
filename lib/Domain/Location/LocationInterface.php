@@ -10,7 +10,7 @@ namespace Venues\Domain\Location;
  * @author      Pau Gay <pau.gay@gmail.com> 
  */
 
-interface ILocation
+interface LocationInterface
 {
     /**
      * Constructor

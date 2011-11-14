@@ -10,7 +10,7 @@ namespace Venues\Iterator;
  * @author      Pau Gay <pau.gay@gmail.com> 
  */
 
-interface IIterator
+interface IteratorInterface
     extends \Iterator, \Countable
 {
     /**

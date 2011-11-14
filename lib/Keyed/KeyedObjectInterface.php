@@ -13,7 +13,7 @@ namespace Venues\Keyed;
  * @author      Pau Gay <pau.gay@gmail.com> 
  */
 
-interface IKeyedObject
+interface KeyedObjectInterface
 {
     /**
      * Get key

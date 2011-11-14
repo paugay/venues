@@ -1,0 +1,12 @@
+#!/bin/bash
+
+sudo apt-get install php5-dev php5-cli php-pear
+sudo pecl install mongo
+echo "extension=mongo.so" > /etc/php5/conf.d/mongo.ini
+
+wget http://fastdl.mongodb.org/linux/mongodb-linux-x86_64-2.0.1.tgz
+tar zxf mongodb-linux-x86_64-2.0.1.tgz
+mv mongodb-linux-x86_64-2.0.1 data/mongo
+mkdir data/mongo/db
+
+rm mongodb-linux-x86_64-2.0.1.tgz

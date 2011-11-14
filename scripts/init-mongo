@@ -1,0 +1,3 @@
+#!/bin/bash
+
+./data/mongo/bin/mongod --dbpath data/mongo/db &

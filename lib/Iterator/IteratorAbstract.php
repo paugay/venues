@@ -10,8 +10,8 @@ namespace Venues\Iterator;
  * @author      Pau Gay <pau.gay@gmail.com> 
  */
 
-abstract class AIterator
-    implements IIterator
+abstract class IteratorAbstract
+    implements IteratorInterface
 {
     /**
      * Items

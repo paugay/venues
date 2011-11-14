@@ -1,18 +1,18 @@
 <?php
 
-namespace Venues\Iterator;
+namespace Venues\Iterator\Dictionary;
 
 /**
- * Iterator abstract
+ * Dictionary abstract
  *
  * @version     $Id$
  * @package     Venues
  * @author      Pau Gay <pau.gay@gmail.com> 
  */
 
-class Dictionary 
-    extends AIterator
-    implements Dictionary\IDictionary
+abstract class DictionaryAbstract
+    extends \Venues\Iterator\IteratorAbstract
+    implements DictionaryInterface
 {
     /**
      * Add 
@@ -81,8 +81,5 @@ class Dictionary
      *
      * @return String
      */
-    public function generateHash($item)
-    {
-        return md5(serialize($item));
-    }
+    abstract public function generateHash($item);
 }

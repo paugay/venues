@@ -16,7 +16,7 @@ namespace Venues\Domain;
 
 class Venue
     extends KeyedObject
-    implements Venue\IVenue
+    implements Venue\VenueInterface
 {
     /**
      * Key

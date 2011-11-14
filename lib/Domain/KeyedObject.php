@@ -14,7 +14,7 @@ namespace Venues\Domain;
  */
 
 abstract class KeyedObject
-    implements \Venues\Keyed\IKeyedObject
+    implements \Venues\Keyed\KeyedObjectInterface
 {
     /**
      * Get key

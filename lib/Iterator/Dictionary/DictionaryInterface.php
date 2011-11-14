@@ -10,8 +10,8 @@ namespace Venues\Iterator\Dictionary;
  * @author      Pau Gay <pau.gay@gmail.com> 
  */
 
-interface IDictionary
-    extends \Venues\Iterator\IIterator
+interface DictionaryInterface
+    extends \Venues\Iterator\IteratorInterface
 {
     /**
      * Add 
@@ -52,15 +52,4 @@ interface IDictionary
      * @return Array
      */
     public function getKeys();
-
-    /**
-     * Generate hash
-     *
-     * Methor that return the hash of the item.
-     *
-     * @param Mixed $item
-     *
-     * @return String
-     */
-    public function generateHash($item);
 }

@@ -15,7 +15,7 @@ namespace Venues\Domain;
  */
 
 class Location
-    implements Location\ILocation
+    implements Location\LocationInterface
 {
     /**
      * Radius of the earth
