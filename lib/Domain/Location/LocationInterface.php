@@ -90,4 +90,13 @@ interface LocationInterface
      * @return Float Distance from the current location to $to in km.
      */
     public function getDistanceTo(\Location $to);
+
+    /**
+     * Is valid country code?
+     *
+     * @param String $countryCode
+     *
+     * @return Boolean
+     */
+    public static function isValidCountryCode($countryCode);
 }

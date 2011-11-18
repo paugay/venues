@@ -345,17 +345,13 @@ class Location
             );
         }
 
-        if (!is_null($countryCode))
-        {
-            $countryCode = strtoupper($countryCode);
 
-            if(!isset(self::$countryCodes[$countryCode]))
-            {
-                throw new \Venues\Error\BadParameter(
-                    'Error: Country code \'' . $countryCode . '\' is not a '
-                    . 'valid code according to ISO 3166 aplha 2.'
-                );
-            }
+        if (!self::isValidCountryCode($countryCode))
+        {
+            throw new \Venues\Error\BadParameter(
+                'Error: Country code \'' . $countryCode . '\' is not a '
+                . 'valid code according to ISO 3166 aplha 2.'
+            );
         }
 
         $this->lat = $lat;
@@ -455,6 +451,29 @@ class Location
 
         return self::RADIUS_OF_EARTH_IN_KM * $c;                  
     }
+
+    /**
+     * Is valid country code?
+     *
+     * @param String $countryCode
+     *
+     * @return Boolean
+     */
+    public static function isValidCountryCode($countryCode)
+    {
+        if (!is_null($countryCode))
+        {
+            $countryCode = strtoupper($countryCode);
+
+            if(!isset(self::$countryCodes[$countryCode]))
+            {
+                return FALSE;
+            }
+        }
+
+        return TRUE;
+    }
+    
 
     // --- private methods
     
